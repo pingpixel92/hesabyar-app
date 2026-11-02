@@ -5,15 +5,16 @@ import type { NextConfig } from "next";
  *
  * حالت عادی (محلی/پیش‌نمایش): سرور استاندارد Next.js
  * حالت STATIC_EXPORT=1 (دیپلوی): خروجی کاملاً استاتیک برای GitHub Pages
+ *
+ * دامنهٔ اختصاصی (hesabyar.kdns.fr) سایت را از «ریشه» سرو می‌کند،
+ * پس basePath لازم نیست؛ خروجی با مسیرهای نسبی ریشه ساخته می‌شود.
  */
 const isStaticExport = process.env.STATIC_EXPORT === "1";
-const REPO_NAME = "hesabyar-app";
 
 const nextConfig: NextConfig = {
   ...(isStaticExport
     ? {
         output: "export" as const,
-        basePath: `/${REPO_NAME}`,
         trailingSlash: true,
         images: { unoptimized: true },
       }
