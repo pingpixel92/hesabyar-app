@@ -1,0 +1,316 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────
+   حساب‌یار — سیستم طراحی «برنز و مرکب»
+   تم تیره سینمایی (پیش‌فرض) + تم روشن ادیتوریال
+   ───────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+
+  --background: #f6f4ef;
+  --foreground: #221c13;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-foreground: #221c13;
+  --popover: #ffffff;
+  --popover-foreground: #221c13;
+  --primary: #a06a28;
+  --primary-foreground: #fff8ec;
+  --secondary: #edeae2;
+  --secondary-foreground: #221c13;
+  --muted: #eceade;
+  --muted-foreground: #7b7365;
+  --accent: #f1e9da;
+  --accent-foreground: #7c5218;
+  --destructive: #dc2626;
+
+  --border: rgba(34, 28, 19, 0.12);
+  --input: rgba(34, 28, 19, 0.16);
+  --ring: rgba(160, 106, 40, 0.5);
+
+  --bronze: #a06a28;
+  --bronze-strong: #8a5720;
+  --bronze-soft: rgba(160, 106, 40, 0.12);
+  --income: #0c9d6d;
+  --income-soft: rgba(12, 157, 109, 0.12);
+  --expense: #dc2626;
+  --expense-soft: rgba(220, 38, 38, 0.1);
+
+  --stage: #f6f4ef;
+  --grid-line: rgba(34, 28, 19, 0.08);
+  --grid-dot: rgba(34, 28, 19, 0.3);
+  --watermark: rgba(34, 28, 19, 0.055);
+  --cursor: rgba(34, 28, 19, 0.65);
+  --grain-opacity: 0.05;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #0c0a07;
+  --foreground: #f3ede2;
+  --card: rgba(243, 237, 226, 0.045);
+  --card-foreground: #f3ede2;
+  --popover: #17130e;
+  --popover-foreground: #f3ede2;
+  --primary: #c08a3e;
+  --primary-foreground: #191106;
+  --secondary: rgba(243, 237, 226, 0.08);
+  --secondary-foreground: #f3ede2;
+  --muted: rgba(243, 237, 226, 0.07);
+  --muted-foreground: #a79d8c;
+  --accent: rgba(192, 138, 62, 0.15);
+  --accent-foreground: #e3ba7e;
+  --destructive: #f87171;
+
+  --border: rgba(243, 237, 226, 0.1);
+  --input: rgba(243, 237, 226, 0.15);
+  --ring: rgba(192, 138, 62, 0.55);
+
+  --bronze: #c08a3e;
+  --bronze-strong: #daa558;
+  --bronze-soft: rgba(192, 138, 62, 0.14);
+  --income: #34d399;
+  --income-soft: rgba(52, 211, 153, 0.13);
+  --expense: #f87171;
+  --expense-soft: rgba(248, 113, 113, 0.13);
+
+  --stage: #0c0a07;
+  --grid-line: rgba(243, 237, 226, 0.07);
+  --grid-dot: rgba(243, 237, 226, 0.35);
+  --watermark: rgba(243, 237, 226, 0.05);
+  --cursor: rgba(243, 237, 226, 0.8);
+  --grain-opacity: 0.045;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bronze: var(--bronze);
+  --color-bronze-strong: var(--bronze-strong);
+  --color-bronze-soft: var(--bronze-soft);
+  --color-income: var(--income);
+  --color-income-soft: var(--income-soft);
+  --color-expense: var(--expense);
+  --color-expense-soft: var(--expense-soft);
+  --color-stage: var(--stage);
+  --color-watermark: var(--watermark);
+
+  --font-sans: var(--font-vazirmatn), "Vazirmatn", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-display: var(--font-italiana), "Italiana", ui-serif, serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-vazirmatn), "Vazirmatn", ui-sans-serif, system-ui,
+      sans-serif;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--bronze-soft);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* جای‌گذاری ارقام فارسی هم‌عرض برای شمارنده‌ها */
+  .tabular-fa {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ─── کرسر سفارشی (فقط دسکتاپ) ─── */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+  /* روی فیلدهای متنی، نشانگر بومی برای ویرایش راحت نگه داشته می‌شود */
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea {
+    cursor: text !important;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border: 1.5px solid var(--cursor);
+  background: transparent;
+}
+
+.cursor-ring {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--cursor);
+  opacity: 0.75;
+  z-index: 9998;
+  transition:
+    width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.28s,
+    opacity 0.28s;
+}
+
+.cursor-ring.is-hover {
+  width: 56px;
+  height: 56px;
+  border-color: var(--bronze);
+  opacity: 1;
+}
+
+.cursor-ring.is-hidden,
+.cursor-dot.is-hidden {
+  opacity: 0;
+}
+
+/* ─── گرید ادیتوریال پس‌زمینه ─── */
+.grid-hairline {
+  background: var(--grid-line);
+  width: 1px;
+}
+
+@keyframes dot-drift {
+  from {
+    transform: translate(-50%, -6vh);
+  }
+  to {
+    transform: translate(-50%, 104vh);
+  }
+}
+
+.grid-drift-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--grid-dot);
+  box-shadow: 0 0 6px var(--grid-dot);
+  animation: dot-drift linear infinite;
+  will-change: transform;
+}
+
+/* ─── واترمارک لاتین برند ─── */
+.watermark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  color: var(--watermark);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ─── متن با گرادیان برنز ─── */
+.text-bronze-gradient {
+  background: linear-gradient(
+    110deg,
+    var(--bronze-strong) 10%,
+    var(--bronze) 45%,
+    var(--bronze-strong) 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── بافت دانه‌ای خیلی ملایم روی کل صفحه ─── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── اسکرول‌بار باریک لیست تراکنش‌ها ─── */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--foreground) 30%, transparent)
+    transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklab, var(--foreground) 28%, transparent);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklab, var(--foreground) 45%, transparent);
+}
+
+/* ─── کارت شیشه‌ای پایه ─── */
+.panel {
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border-radius: 1.5rem;
+}
+
+/* ─── حرکت کاهش‌یافته برای کاربران حساس به انیمیشن ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
