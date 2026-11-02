@@ -43,7 +43,7 @@ src/
 ├─ app/                  # صفحه، چیدمان، سیستم طراحی (globals.css)
 ├─ components/hesabyar/  # کامپوننت‌های اپ (فرم، لیست، آمار، نمودار، افکت‌ها)
 ├─ components/ui/        # اجزای پایهٔ shadcn/ui
-└─ lib/                  # منطق مالی، فروشگاه localStorage، دادهٔ نمونه
+└─ lib/                  # منطق مالی و فروشگاه localStorage
 ```
 
 ## 🔒 حریم خصوصی

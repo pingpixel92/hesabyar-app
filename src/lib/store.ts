@@ -5,10 +5,10 @@
 
 import { useSyncExternalStore } from "react";
 import { getDeviceId, type Transaction } from "./finance";
-import { buildSampleTransactions } from "./sample-data";
 
-const STORAGE_KEY = "hesabyar:transactions:v1";
-const SEED_FLAG = "hesabyar:seeded:v1";
+// نسخهٔ ۲: هر بازدیدکننده دفتر خالی خودش را شروع می‌کند.
+// تغییر نسخه یعنی داده‌های دمو/قدیمی نادیده گرفته می‌شوند.
+const STORAGE_KEY = "hesabyar:transactions:v2";
 
 const EMPTY: Transaction[] = [];
 
@@ -21,13 +21,7 @@ function readStorage(): Transaction[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw === null) {
-      // اولین بازدید؟ دفتر را با داده نمونه پر می‌کنیم
-      if (!localStorage.getItem(SEED_FLAG)) {
-        const sample = buildSampleTransactions();
-        localStorage.setItem(SEED_FLAG, "1");
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(sample));
-        return sample;
-      }
+      // اولین بازدید؟ دفتر کاملاً خالی شروع می‌شود
       return EMPTY;
     }
     const parsed = JSON.parse(raw);
@@ -135,8 +129,4 @@ export function deleteTransaction(id: string) {
 
 export function clearAllTransactions() {
   setState([]);
-}
-
-export function loadSampleTransactions() {
-  setState(buildSampleTransactions());
 }

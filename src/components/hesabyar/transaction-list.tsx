@@ -4,7 +4,6 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { toast } from "sonner";
 import { Pencil, ReceiptText, Trash2 } from "lucide-react";
 import {
   AlertDialog,
@@ -23,7 +22,6 @@ import {
   findCategory,
   type Transaction,
 } from "@/lib/finance";
-import { loadSampleTransactions } from "@/lib/store";
 
 type FilterKey = "all" | "income" | "expense";
 
@@ -132,18 +130,6 @@ export function TransactionList({
               ? "اولین دخل یا خرجت رو از فرم کنار صفحه ثبت کن!"
               : "یه فیلتر دیگه رو امتحان کن."}
           </p>
-          {transactions.length === 0 && (
-            <button
-              type="button"
-              onClick={() => {
-                loadSampleTransactions();
-                toast.success("داده نمونه بارگذاری شد ✨");
-              }}
-              className="mt-1 rounded-2xl border border-bronze/40 bg-bronze-soft px-4 py-2 text-xs font-bold text-bronze transition-colors hover:border-bronze/70"
-            >
-              بارگذاری دادهٔ نمونه
-            </button>
-          )}
         </div>
       ) : (
         <ul className="scrollbar-thin max-h-[34rem] space-y-2 overflow-y-auto pe-1">

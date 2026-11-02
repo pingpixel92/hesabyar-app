@@ -58,8 +58,8 @@ export function SiteFooter() {
           <AlertDialogHeader className="text-start">
             <AlertDialogTitle>پاک کردن همهٔ داده‌ها؟</AlertDialogTitle>
             <AlertDialogDescription>
-              همهٔ تراکنش‌های ثبت‌شده روی این مرورگر برای همیشه حذف می‌شن. اگر
-              شروع دوباره خواستی، بعدش می‌تونی دادهٔ نمونه رو برگردونی.
+              همهٔ تراکنش‌های ثبت‌شده روی این مرورگر برای همیشه حذف می‌شن و
+              دفتر از صفر شروع می‌شه. این کار قابل بازگشت نیست.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="flex-row gap-2">

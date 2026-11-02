@@ -61,3 +61,6 @@ server.log
 /.zscripts/
 Caddyfile
 download/
+
+# اسکریپت‌های تست محلی
+scripts/
