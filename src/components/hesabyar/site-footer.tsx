@@ -51,6 +51,11 @@ export function SiteFooter() {
             LOCAL FIRST LEDGER
           </span>
         </div>
+
+        {/* اعتبار سازندگان — خط ریز */}
+        <p className="text-[10px] leading-5 text-muted-foreground/55">
+          ساخته شده توسط سام الیاسی · دیزاین شده توسط سامیار احمدوند
+        </p>
       </div>
 
       <AlertDialog open={confirmClear} onOpenChange={setConfirmClear}>

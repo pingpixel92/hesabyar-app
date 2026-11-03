@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { JalaliDatePicker } from "./jalali-date-picker";
 import {
   categoriesFor,
   faNumber,
@@ -254,16 +255,10 @@ export function TransactionForm({
           </div>
         </div>
 
-        {/* تاریخ */}
+        {/* تاریخ — انتخابگر شمسی */}
         <div className="space-y-2">
           <Label htmlFor="date">تاریخ</Label>
-          <Input
-            id="date"
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="h-12 rounded-2xl"
-          />
+          <JalaliDatePicker id="date" value={date} onChange={setDate} />
         </div>
 
         {/* دکمه‌ها */}

@@ -43,7 +43,6 @@
   --grid-line: rgba(34, 28, 19, 0.08);
   --grid-dot: rgba(34, 28, 19, 0.3);
   --watermark: rgba(34, 28, 19, 0.055);
-  --cursor: rgba(34, 28, 19, 0.65);
   --grain-opacity: 0.05;
 }
 
@@ -82,7 +81,6 @@
   --grid-line: rgba(243, 237, 226, 0.07);
   --grid-dot: rgba(243, 237, 226, 0.35);
   --watermark: rgba(243, 237, 226, 0.05);
-  --cursor: rgba(243, 237, 226, 0.8);
   --grain-opacity: 0.045;
 }
 
@@ -153,63 +151,6 @@
   .tabular-fa {
     font-variant-numeric: tabular-nums;
   }
-}
-
-/* ─── کرسر سفارشی (فقط دسکتاپ) ─── */
-@media (hover: hover) and (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor * {
-    cursor: none !important;
-  }
-  /* روی فیلدهای متنی، نشانگر بومی برای ویرایش راحت نگه داشته می‌شود */
-  html.has-custom-cursor input,
-  html.has-custom-cursor textarea {
-    cursor: text !important;
-  }
-}
-
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-radius: 9999px;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  will-change: transform;
-}
-
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  border: 1.5px solid var(--cursor);
-  background: transparent;
-}
-
-.cursor-ring {
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid var(--cursor);
-  opacity: 0.75;
-  z-index: 9998;
-  transition:
-    width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.28s,
-    opacity 0.28s;
-}
-
-.cursor-ring.is-hover {
-  width: 56px;
-  height: 56px;
-  border-color: var(--bronze);
-  opacity: 1;
-}
-
-.cursor-ring.is-hidden,
-.cursor-dot.is-hidden {
-  opacity: 0;
 }
 
 /* ─── گرید ادیتوریال پس‌زمینه ─── */

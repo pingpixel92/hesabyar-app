@@ -14,7 +14,6 @@ import {
   useTransactions,
 } from "@/lib/store";
 import { BronzeWave } from "./bronze-wave";
-import { CursorRing } from "./cursor-ring";
 import { GridOverlay } from "./grid-overlay";
 import { Hero } from "./hero";
 import { PageLoader } from "./page-loader";
@@ -66,7 +65,6 @@ export function Dashboard() {
       <BronzeWave />
       <div aria-hidden className="grain-overlay" />
       <GridOverlay />
-      <CursorRing />
 
       {/* پردهٔ ورود */}
       {!loaderGone && (
